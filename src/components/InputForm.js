@@ -6,13 +6,17 @@ class InputForm extends React.Component {
     const handleSubmit = e => {
       e.preventDefault();
 
-      let newList = {
-        id: Date.now(),
-        value: e.target.elements.todo.value,
-        isComplete: false
-      };
+      let input = e.target.elements.todo.value;
 
-      this.props.onSubmit(newList)
+      if (input.trim() !== '') {
+        let newList = {
+          id: Date.now(),
+          value: e.target.elements.todo.value,
+          isComplete: false
+        };
+
+        this.props.onSubmit(newList)
+      }
      
       e.target.elements.todo.value = "";
     }
