@@ -39,10 +39,14 @@ class TodoList extends React.Component {
     }
 
     const updateTodo = (TodoID, updatedTodo) => {
-      // this.setState(prevState => prevState.map(
-      //   list => (list.id === TodoID ? updatedTodo : list)
-      // ));
-      console.log(updateTodo)
+      this.state.lists.map(todo => {
+        if (todo.id === TodoID) {
+          todo.value = updatedTodo;
+        }
+        return todo
+      })
+
+      this.setState( { lists: this.state.lists } )
     }
 
     return (
